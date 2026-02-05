@@ -41,7 +41,7 @@ jobs:
       - name: Install sign tool
         if: ${{ env.SignBuild == 'true' }}
         shell: cmd
-        run: dotnet tool install --tool-path build\.tools sign --version 0.9.1-beta.24170.3
+        run: dotnet tool install --tool-path build\.tools sign --version 0.9.1-beta.25330.2
 
       - name: Configure automated logging and crash dumps
         shell: cmd
@@ -63,15 +63,26 @@ jobs:
       #     client-id: ${{ secrets.WIX_SIGNING_CLIENTID }}
       #     tenant-id: ${{ secrets.WIX_SIGNING_TENANTID }}
 
+      - name: Dump GitHub OIDC claims (diagnostic)
+        shell: pwsh
+        run: |
+          $token = Invoke-RestMethod `
+            -Headers @{ Authorization = "Bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN" } `
+            -Uri "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange"
+          $parts = $token.value.Split('.')
+          $claims = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($parts[1] + '=='))
+          Write-Host $claims
+
+
       - name: Build wix7
         shell: cmd
         run: ./src/build_official.cmd
         env:
           RuntimeTestsEnabled: true
+          AZURE_CLIENT_ID: ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_CLIENTID || '' }}
+          AZURE_TENANT_ID: ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_TENANTID || '' }}
+          AZURE_IDENTITY_LOGGING_ENABLED: true
           SigningKeyVaultUri:  ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_VAULTURI || '' }}
-          SigningTenantId:  ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_TENANTID || '' }}
-          SigningClientId:  ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_CLIENTID || '' }}
-          SigningClientSecret:  ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_SECRET || '' }}
           SigningCertName:  ${{ env.SignBuild == 'true' && secrets.WIX_SIGNING_CERTNAME || '' }}
 
       - name: Validate test results
