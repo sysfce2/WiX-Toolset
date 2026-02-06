@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -44,4 +44,4 @@ dotnet test ^
 
 :end
 @popd
-@endlocal
+

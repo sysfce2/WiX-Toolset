@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -36,4 +36,4 @@ msbuild -Restore -t:Pack dtf.slnx -p:Configuration=%_C% -tl -nologo -m -warnaser
 
 :end
 @popd
-@endlocal
+

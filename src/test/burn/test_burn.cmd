@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _RESULT=0
@@ -25,4 +25,4 @@ dotnet test -c %_C% WixToolsetTest.BurnE2E --nologo --no-build -l "trx;LogFileNa
 
 :LExit
 @popd
-@endlocal
+

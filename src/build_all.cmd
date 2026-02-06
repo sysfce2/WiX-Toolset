@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -97,4 +97,4 @@ exit /b 2
 
 :LExit
 @popd
-@endlocal
+

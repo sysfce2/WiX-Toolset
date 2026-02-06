@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -43,4 +43,4 @@ msbuild -Restore setup.slnx -p:Configuration=%_C% -tl -nologo -m -warnaserror -b
 
 :end
 @popd
-@endlocal
+

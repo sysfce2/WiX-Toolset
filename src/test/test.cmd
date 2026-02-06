@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -17,4 +17,4 @@
 dotnet test wix -c %_C% --nologo -l "trx;LogFileName=%_L%\TestResults\WixToolsetTest.WixE2ETests.trx" || exit /b
 
 @popd
-@endlocal
+

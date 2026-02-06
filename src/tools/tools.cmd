@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -30,4 +30,4 @@ msbuild -Restore tools_t.proj -p:Configuration=%_C% -tl -nologo -m -warnaserror 
 
 :end
 @popd
-@endlocal
+

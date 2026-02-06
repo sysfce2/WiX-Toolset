@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -11,4 +11,4 @@
 msbuild -Restore WixBuildFinalize\WixBuildFinalize.proj -p:Configuration=%_C% -nologo || exit /b
 
 @popd
-@endlocal
+

@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -13,4 +13,4 @@
 msbuild ext_t.proj -p:Configuration=%_C% -p:SuppressWixClean=%_SuppressWixClean% -m -tl -nologo -warnaserror -bl:%_L%\ext_build.binlog || exit /b
 
 @popd
-@endlocal
+

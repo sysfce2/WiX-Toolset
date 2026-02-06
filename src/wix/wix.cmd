@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _C=Debug
@@ -75,4 +75,4 @@ msbuild pack_t.proj -p:Configuration=%_C% -tl -nologo -m -warnaserror -bl:%_L%\w
 
 :end
 @popd
-@endlocal
+

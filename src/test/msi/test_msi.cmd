@@ -1,4 +1,4 @@
-@setlocal
+
 @pushd %~dp0
 
 @set _RESULT=0
@@ -20,4 +20,4 @@ dotnet test -c %_C% WixToolsetTest.MsiE2E --nologo --no-build -l "trx;LogFileNam
 
 :LExit
 @popd
-@endlocal
+
