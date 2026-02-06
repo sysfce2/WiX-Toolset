@@ -41,7 +41,7 @@ jobs:
       - name: Install sign tool
         if: ${{ env.SignBuild == 'true' }}
         shell: cmd
-        run: dotnet tool install --tool-path build\.tools sign --version 0.9.1-beta.25330.2
+        run: dotnet tool install --tool-path build\.tools sign --version 0.9.1-beta.26102.1
 
       - name: Configure automated logging and crash dumps
         shell: cmd
