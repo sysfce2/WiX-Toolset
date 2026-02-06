@@ -10,6 +10,15 @@
 
 @echo build %_C%
 
+echo === OIDC ENV CHECK ===
+echo ACTIONS_ID_TOKEN_REQUEST_URL=%ACTIONS_ID_TOKEN_REQUEST_URL%
+echo ACTIONS_ID_TOKEN_REQUEST_TOKEN=%ACTIONS_ID_TOKEN_REQUEST_TOKEN%
+echo AZURE_CLIENT_ID=%AZURE_CLIENT_ID%
+echo AZURE_TENANT_ID=%AZURE_TENANT_ID%
+echo =====================
+
+
+
 :: Initialize required files/folders
 
 call build_init.cmd

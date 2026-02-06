@@ -15,6 +15,17 @@
 
 @echo Building dtf %_C%
 
+
+
+echo === OIDC ENV CHECK ===
+echo ACTIONS_ID_TOKEN_REQUEST_URL=%ACTIONS_ID_TOKEN_REQUEST_URL%
+echo ACTIONS_ID_TOKEN_REQUEST_TOKEN=%ACTIONS_ID_TOKEN_REQUEST_TOKEN%
+echo AZURE_CLIENT_ID=%AZURE_CLIENT_ID%
+echo AZURE_TENANT_ID=%AZURE_TENANT_ID%
+echo =====================
+
+
+
 msbuild -Restore SfxCA\sfxca_t.proj -p:Configuration=%_C% -tl -nologo -m -warnaserror -bl:..\..\build\logs\dtf_sfxca.binlog || exit /b
 
 msbuild -Restore -t:Pack dtf.slnx -p:Configuration=%_C% -tl -nologo -m -warnaserror -bl:..\..\build\logs\dtf_build.binlog || exit /b
