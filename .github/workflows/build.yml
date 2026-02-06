@@ -59,9 +59,9 @@ jobs:
         if: ${{ env.SignBuild == 'true' }}
         uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # tag: v2.3.0
         with:
+          allow-no-subscriptions: true
           client-id: ${{ secrets.WIX_SIGNING_CLIENTID }}
           tenant-id: ${{ secrets.WIX_SIGNING_TENANTID }}
-          subscription-id: ${{ secrets.WIX_SIGNING_SUBSCRIPTIONID }}
 
       - name: Dump GitHub OIDC claims (diagnostic)
         shell: pwsh
